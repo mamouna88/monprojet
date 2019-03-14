@@ -8,11 +8,14 @@ use Generic\Router\Router;
 use Generic\Router\RouterMiddleware;
 use GuzzleHttp\Psr7\ServerRequest;
 
+$rootDir=dirname(__DIR__);
 // Chargement de l'autoloader
-require_once dirname(__DIR__) .  '/vendor/autoload.php';
-
+require_once $rootDir .  '/vendor/autoload.php';
 // Création de le requête
 $request = ServerRequest::fromGlobals();
+$twig=new TwigRenderer($rootDir .  '/templates');
+
+
 //ajouter des routes dans le router
 $router=new Router();
 $router->addRoute('/home',new HomeController(),'homepage');
